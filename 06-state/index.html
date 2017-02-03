@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My first Clock</title>
+	<!-- Script tags including React -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+	<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+	class Clock extends React.Component {
+		constructor(props) {
+			super(props);
+
+			this.updateClock();
+		}
+
+		startTimer() {
+			window.setTimeout(this.updateClock.bind(this), 1000);
+		}
+
+		updateClock() {
+			debugger;
+			let time = new Date(),
+					sec = time.getSeconds(),
+					hour = time.getMinutes(),
+					min = time.getMinutes(),
+					ampm = hour > 12 ? 'pm' : 'am';
+
+			this.setState({
+				sec  : sec,
+				hour : hour,
+				min  : min,
+				ampm : ampm
+			}, this.startTimer.bind(this));
+		}
+
+		render() {
+			debugger;
+			const {hour, min, sec, ampm} = this.state;
+
+			return (
+				<div className="clock">
+					{hour}:{min}:{sec}
+				</div>
+			);
+		}
+	}
+	var element = document.querySelector('#app');
+	ReactDOM.render(<Clock />, element);
+</script>
+</body>
+</html>

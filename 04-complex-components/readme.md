@@ -12,3 +12,9 @@
 # Misc
 - don't let components be really big
 - they van be brake apart (easier to test and add functionality)
+
+# State
+- React does not allow us to modify this.props
+- this.setState() -> we can modify the state of the component
+-- render will be called
+
