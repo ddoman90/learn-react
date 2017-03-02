@@ -14,7 +14,9 @@
 	class Clock extends React.Component {
 		constructor(props) {
 			super(props);
+		}
 
+		componentWillMount() {
 			this.updateClock();
 		}
 
@@ -23,7 +25,6 @@
 		}
 
 		updateClock() {
-			debugger;
 			let time = new Date(),
 					sec = time.getSeconds(),
 					hour = time.getMinutes(),
@@ -39,7 +40,6 @@
 		}
 
 		render() {
-			debugger;
 			const {hour, min, sec, ampm} = this.state;
 
 			return (
