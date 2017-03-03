@@ -12,10 +12,6 @@
 <div id="app"></div>
 <script type="text/babel">
 	class Clock extends React.Component {
-		constructor(props) {
-			super(props);
-		}
-
 		componentWillMount() {
 			this.updateClock();
 		}
@@ -26,10 +22,10 @@
 
 		updateClock() {
 			let time = new Date(),
-					sec = time.getSeconds(),
-					hour = time.getMinutes(),
-					min = time.getMinutes(),
-					ampm = hour > 12 ? 'pm' : 'am';
+				sec = time.getSeconds(),
+				hour = time.getHours() > 12 ? time.getHours() - 12 : time.getHours(),
+				min = time.getMinutes(),
+				ampm = hour > 12 ? 'pm' : 'am';
 
 			this.setState({
 				sec  : sec,
@@ -44,7 +40,7 @@
 
 			return (
 				<div className="clock">
-					{hour}:{min}:{sec}
+					{hour}:{min}:{sec} {ampm}
 				</div>
 			);
 		}
